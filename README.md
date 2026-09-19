@@ -1,5 +1,5 @@
 # KARABAS Cash Control
-
+![KARABAS UI](karabas-ui-cropped.png)
 Public showcase of an AI-assisted document processing workflow for small-business cash reporting.
 
 ## What the project does
