@@ -1,37 +1,117 @@
 # KARABAS Cash Control
-![KARABAS UI](karabas-ui-cropped.png)
-Public showcase of an AI-assisted document processing workflow for small-business cash reporting.
 
-## What the project does
+## AI-автоматизация обработки кассовых отчётов и Excel
 
-The private working version processes photos of receipts and handwritten shift reports, extracts structured financial data with an AI model, classifies expenses, and prepares data for export into an existing Excel workflow.
+KARABAS Cash Control — прототип системы автоматизации ручной финансовой рутины малого бизнеса.
 
-## Public architecture
+Идея проекта появилась из реального процесса, где сотрудник тратит несколько часов на сверку чеков, рукописных отчётов и ручное заполнение существующей Excel-таблицы.
 
-Image / receipt
-→ AI document understanding
-→ structured JSON
-→ validation schema
-→ Python processing
-→ Excel export
+Цель системы — сократить этот процесс до простого сценария:
 
-## What this repository demonstrates
+Фото документов  
+→ AI-распознавание  
+→ Структурированные данные  
+→ Проверка схемы  
+→ Автоматическая обработка  
+→ Заполнение Excel
 
-- AI-assisted document processing
-- structured model output
-- schema validation
-- expense classification workflow
-- Excel automation concept
-- desktop workflow prototyping
+## Что уже реализовано
 
-## Private components
+- загрузка фотографий чеков и рукописных отчётов;
+- обработка изображений через Gemini API;
+- извлечение даты;
+- извлечение наличной выручки;
+- извлечение безналичной выручки;
+- извлечение расходов;
+- автоматическая классификация расходов;
+- структурированный JSON-ответ;
+- валидация данных через Pydantic;
+- обработка нескольких документов за одну сессию;
+- расчёт общей выручки и расходов;
+- загрузка существующего Excel-файла;
+- сохранение обновлённой версии Excel без перезаписи оригинала;
+- desktop-интерфейс на Tkinter.
 
-The original implementation contains business-specific categories, prompts, Excel mapping logic and customer-specific workflow details. Those parts are intentionally not published.
+## Бизнес-задача
 
-## Tech used in the private version
+Во многих небольших компаниях финансовый учёт до сих пор строится вокруг Excel-файлов, которые используются годами.
 
-Python, Gemini API, Pydantic, JSON, Pillow, OpenPyXL, Tkinter
+Проблема заключается не в самой таблице, а в ручном вводе данных.
 
-## Status
+Сотруднику приходится:
 
-Showcase repository. Customer-specific business logic and production configuration are kept private.
+- собирать чеки;
+- читать рукописные отчёты;
+- сверять суммы;
+- определять категории расходов;
+- вручную переносить данные в Excel;
+- проверять ошибки.
+
+KARABAS автоматизирует именно этот участок процесса.
+
+## Как выглядит целевой процесс
+
+1. Сотрудник фотографирует чеки и отчёты.
+2. Загружает изображения в систему.
+3. AI-модель извлекает необходимые финансовые данные.
+4. Данные приводятся к строгой структуре.
+5. Система проверяет и классифицирует информацию.
+6. Данные автоматически добавляются в существующий Excel workflow.
+7. Пользователь получает обновлённый файл.
+
+В перспективе загрузка документов может происходить через Telegram-бота, web-интерфейс или другое клиентское приложение.
+
+## Архитектура
+
+Image / Receipt  
+→ Gemini API  
+→ Structured JSON  
+→ Pydantic Validation  
+→ Python Processing  
+→ OpenPyXL  
+→ Excel
+
+## Почему это полезно
+
+Основная ценность проекта — сокращение многочасовой ручной работы.
+
+Вместо постоянного копирования цифр из чеков и отчётов человек занимается только загрузкой исходных документов и проверкой результата.
+
+Такой подход может применяться не только к кассовым отчётам, но и к другим процессам, где данные из документов необходимо регулярно переносить в существующие таблицы.
+
+## Текущий статус
+
+Проект находится на стадии рабочего прототипа.
+
+Распознавание документов, структурирование данных и экспорт в Excel реализованы.
+
+Точная привязка данных к конкретным ячейкам и бизнес-структуре исходной Excel-таблицы является следующим этапом и зависит от структуры конкретного файла заказчика.
+
+## Roadmap
+
+- точная интеграция с существующими Excel-шаблонами;
+- автоматическое определение нужного листа и периода;
+- загрузка PDF и других типов документов;
+- Telegram / web interface;
+- централизованное хранение документов;
+- журнал обработанных операций;
+- проверка и подтверждение спорных значений;
+- автоматическая обработка документов без ручного запуска.
+
+## Публичная версия
+
+Этот репозиторий является showcase-версией проекта.
+
+Внутренние business-specific категории, prompts, детали Excel mapping и клиентские правила намеренно не публикуются.
+
+## Технологии
+
+Python  
+Gemini API  
+Pydantic  
+JSON  
+Pillow  
+OpenPyXL  
+Tkinter  
+
+AI-assisted development
